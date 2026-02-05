@@ -1,0 +1,497 @@
+/* Modern Car Rental Website Redesign - Standard UI Implementation */
+
+/* Color Palette - Standard UI Colors */
+:root {
+    --primary-color: #1976d2;
+    --primary-dark: #1565c0;
+    --primary-light: #42a5f5;
+    --secondary-color: #43a047;
+    --secondary-dark: #2e7031;
+    --danger-color: #e53935;
+    --danger-dark: #b71c1c;
+    --warning-color: #fbc02d;
+    --success-color: #28a745;
+    --text-primary: #263238;
+    --text-secondary: #666;
+    --bg-light: #f7fafd;
+    --bg-white: #ffffff;
+    --border-color: #e3eafc;
+    --shadow-sm: 0 2px 8px rgba(44, 62, 80, 0.08);
+    --shadow-md: 0 4px 16px rgba(44, 62, 80, 0.12);
+    --shadow-lg: 0 8px 32px rgba(44, 62, 80, 0.15);
+}
+
+body {
+    background: linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%);
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    color: var(--text-primary);
+}
+
+.login-container {
+    background: #fff;
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 40px 32px 32px 32px;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(44, 62, 80, 0.12);
+    border: 1px solid #e3eafc;
+}
+.login-container h2 {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 24px;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+.login-container label {
+    display: block;
+    margin-top: 18px;
+    color: #263238;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+.login-container input, .login-container select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 7px;
+    border: 1.5px solid #b0bec5;
+    border-radius: 7px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    background: #f7fafd;
+    transition: border 0.2s;
+}
+.login-container input:focus, .login-container select:focus {
+    border: 1.5px solid #1a237e;
+    outline: none;
+}
+.login-container button {
+    width: 100%;
+    margin-top: 28px;
+    padding: 12px;
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.login-container button:hover {
+    background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+/* Dashboard Header - Standard Navigation Bar */
+.dashboard-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    color: white;
+    padding: 20px 40px;
+    margin: -40px -40px 30px -40px;
+    border-radius: 18px 18px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-md);
+}
+
+.dashboard-header h2 {
+    color: white;
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.dashboard-header-nav {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.dashboard-container {
+    max-width: 1100px;
+    margin: 48px auto 48px auto;
+    background: var(--bg-white);
+    padding: 40px 40px 48px 40px;
+    border-radius: 18px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+}
+
+.dashboard-container h2 {
+    color: #fff;
+    font-size: 2.1rem;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.dashboard-container h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-top: 32px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--primary-light);
+}
+/* Standard Button Styles */
+.btn {
+    padding: 10px 22px;
+    border: none;
+    border-radius: 7px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.btn-success {
+    background: linear-gradient(90deg, var(--secondary-color) 0%, #66bb6a 100%);
+    color: white;
+}
+
+.btn-success:hover {
+    background: linear-gradient(90deg, var(--secondary-dark) 0%, var(--secondary-color) 100%);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: linear-gradient(90deg, var(--danger-color) 0%, #ff7043 100%);
+    color: white;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(90deg, var(--danger-dark) 0%, var(--danger-color) 100%);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.logout-btn {
+    background: linear-gradient(90deg, var(--danger-color) 0%, #ff7043 100%);
+    color: white;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.logout-btn:hover {
+    background: linear-gradient(90deg, var(--danger-dark) 0%, var(--danger-color) 100%);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+#add-car-btn {
+    background: linear-gradient(90deg, var(--secondary-color) 0%, #66bb6a 100%);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 7px;
+    margin-bottom: 24px;
+    cursor: pointer;
+    font-size: 1.05rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+#add-car-btn:hover {
+    background: linear-gradient(90deg, var(--secondary-dark) 0%, var(--secondary-color) 100%);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.car-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-bottom: 36px;
+    background: transparent;
+}
+.car-table th, .car-table td {
+    border: none;
+    padding: 16px 12px;
+    text-align: left;
+    font-size: 1.05rem;
+}
+.car-table th {
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+    color: white;
+    font-weight: 700;
+    border-radius: 8px 8px 0 0;
+    letter-spacing: 0.5px;
+    box-shadow: var(--shadow-sm);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+.car-row {
+    cursor: pointer;
+    background: var(--bg-white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.car-row:hover {
+    background: #e3f2fd;
+    box-shadow: var(--shadow-md);
+    border-left: 4px solid var(--primary-color);
+    transform: translateX(5px);
+}
+.car-details-row td {
+    background: #f1f8e9;
+    padding: 24px 16px;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 2px 8px rgba(67, 160, 71, 0.07);
+}
+.car-details {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+}
+.car-photo {
+    width: 140px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #b0bec5;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+    background: #fff;
+}
+.car-details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.car-details li {
+    margin-bottom: 10px;
+    color: #263238;
+    font-size: 1.05rem;
+}
+.rent-btn, .release-btn, .remove-btn {
+    background: linear-gradient(90deg, #1976d2 0%, #42a5f5 100%);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.08);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+.rent-btn:hover {
+    background: linear-gradient(90deg, #1565c0 0%, #1976d2 100%);
+    box-shadow: 0 4px 16px rgba(33, 150, 243, 0.13);
+}
+.release-btn {
+    background: linear-gradient(90deg, #fbc02d 0%, #fff176 100%);
+    color: #333;
+}
+.release-btn:hover {
+    background: linear-gradient(90deg, #f9a825 0%, #fbc02d 100%);
+    box-shadow: 0 4px 16px rgba(251, 192, 45, 0.13);
+}
+.remove-btn {
+    background: linear-gradient(90deg, #e53935 0%, #ff7043 100%);
+}
+.remove-btn:hover {
+    background: linear-gradient(90deg, #b71c1c 0%, #e53935 100%);
+    box-shadow: 0 4px 16px rgba(229, 57, 53, 0.13);
+}
+.add-car-form {
+    background: #f7fafd;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(44, 62, 80, 0.07);
+    margin-bottom: 28px;
+    max-width: 540px;
+    border: 1px solid #e3eafc;
+}
+.add-car-form label {
+    display: block;
+    margin-bottom: 14px;
+    color: #263238;
+    font-weight: 500;
+}
+.add-car-form input[type="text"],
+.add-car-form input[type="number"],
+.add-car-form input[type="file"],
+.add-car-form input[type="email"],
+.add-car-form input[type="password"],
+.add-car-form textarea,
+.add-car-form select {
+    width: 100%;
+    padding: 10px;
+    border: 1.5px solid #b0bec5;
+    border-radius: 7px;
+    margin-top: 5px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    background: #fff;
+    transition: border 0.2s;
+}
+.add-car-form input:focus,
+.add-car-form textarea:focus,
+.add-car-form select:focus {
+    border: 1.5px solid #1976d2;
+    outline: none;
+}
+.add-car-form button[type="submit"] {
+    background: linear-gradient(90deg, #1976d2 0%, #42a5f5 100%);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 10px 24px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+.add-car-form button[type="submit"]:hover {
+    background: linear-gradient(90deg, #1565c0 0%, #1976d2 100%);
+    box-shadow: 0 4px 16px rgba(33, 150, 243, 0.13);
+}
+
+/* Account Management Styles - Standard Button */
+a.account-btn,
+a.account-btn:link,
+a.account-btn:visited,
+a.account-btn:hover,
+a.account-btn:active,
+a.account-btn:focus {
+    background: linear-gradient(90deg, var(--secondary-color) 0%, #66bb6a 100%) !important;
+    color: white !important;
+    padding: 10px 22px !important;
+    border: none !important;
+    border-radius: 7px !important;
+    text-decoration: none !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: all 0.3s ease !important;
+    display: inline-block !important;
+    cursor: pointer !important;
+    outline: none !important;
+}
+
+a.account-btn:hover,
+a.account-btn:focus {
+    background: linear-gradient(90deg, var(--secondary-dark) 0%, var(--secondary-color) 100%) !important;
+    box-shadow: var(--shadow-md) !important;
+    text-decoration: none !important;
+    color: white !important;
+    transform: translateY(-2px) !important;
+}
+
+a.account-btn:active {
+    background: linear-gradient(90deg, #1b5e20 0%, var(--secondary-dark) 100%) !important;
+    color: white !important;
+    text-decoration: none !important;
+    transform: translateY(0) !important;
+}
+
+/* Message Styles - Standard Alert Components */
+.message {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    border-left: 4px solid;
+    box-shadow: var(--shadow-sm);
+}
+
+.message-success {
+    background: #d4edda;
+    color: #155724;
+    border-left-color: var(--success-color);
+}
+
+.message-error {
+    background: #f8d7da;
+    color: #721c24;
+    border-left-color: var(--danger-color);
+}
+
+.message-info {
+    background: #d1ecf1;
+    color: #0c5460;
+    border-left-color: var(--primary-color);
+}
+
+/* Responsive Design - Standard Mobile Layout */
+@media (max-width: 700px) {
+    .dashboard-container {
+        padding: 18px 4vw 24px 4vw;
+        margin: 20px auto;
+    }
+    
+    .dashboard-header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        margin: -18px -4vw 20px -4vw;
+        border-radius: 0;
+    }
+    
+    .dashboard-header h2 {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+    
+    .dashboard-header-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .car-details {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .car-photo {
+        width: 100%;
+        height: 140px;
+    }
+    .add-car-form {
+        padding: 14px;
+        max-width: 100%;
+    }
+    .account-btn,
+    .logout-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        margin: 5px;
+    }
+} 

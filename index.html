@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Car Rental Login</h2>
+        <form action="php/login.php" method="POST" id="login-form">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+        
+        <div style="text-align: center; margin-top: 20px;">
+            <button type="button" id="show-signup-btn" style="background: transparent; border: none; color: #1976d2; cursor: pointer; text-decoration: underline;">Don't have an account? Sign Up</button>
+        </div>
+
+        <!-- Sign Up Form (hidden by default) -->
+        <div id="signup-container" style="display: none; margin-top: 30px; padding-top: 30px; border-top: 2px solid #e3eafc;">
+            <h2>Create New Account</h2>
+            <form action="php/signup.php" method="POST" id="signup-form">
+                <label for="signup-email">Email:</label>
+                <input type="email" id="signup-email" name="email" required>
+
+                <label for="signup-password">Password:</label>
+                <input type="password" id="signup-password" name="password" required>
+
+                <label for="signup-usertype">Account Type:</label>
+                <select id="signup-usertype" name="usertype" required>
+                    <option value="client">Client</option>
+                    <option value="admin">Admin</option>
+                </select>
+
+                <button type="submit">Create Account</button>
+            </form>
+            <div style="text-align: center; margin-top: 15px;">
+                <button type="button" id="show-login-btn" style="background: transparent; border: none; color: #1976d2; cursor: pointer; text-decoration: underline;">Already have an account? Login</button>
+            </div>
+        </div>
+
+        <div class="login-message">
+            <!-- Error or info messages will appear here -->
+        </div>
+    </div>
+
+    <script>
+        // Toggle between login and signup forms
+        document.getElementById('show-signup-btn').addEventListener('click', function() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('show-signup-btn').style.display = 'none';
+            document.getElementById('signup-container').style.display = 'block';
+        });
+
+        document.getElementById('show-login-btn').addEventListener('click', function() {
+            document.getElementById('signup-container').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('show-signup-btn').style.display = 'block';
+        });
+
+        // Show error message if redirected with error
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('error') === '1') {
+            document.querySelector('.login-message').textContent = 'Invalid email or password. Please try again.';
+            document.querySelector('.login-message').style.color = 'red';
+        }
+        if (urlParams.get('error') === '2') {
+            document.querySelector('.login-message').textContent = 'Email already exists. Please use a different email.';
+            document.querySelector('.login-message').style.color = 'red';
+        }
+        if (urlParams.get('error') === '3') {
+            document.querySelector('.login-message').textContent = 'Please fill in all fields.';
+            document.querySelector('.login-message').style.color = 'red';
+        }
+        if (urlParams.get('error') === '4') {
+            document.querySelector('.login-message').textContent = 'Error creating account. Please try again.';
+            document.querySelector('.login-message').style.color = 'red';
+        }
+        if (urlParams.get('success') === '1') {
+            document.querySelector('.login-message').textContent = 'Account created successfully! Please login.';
+            document.querySelector('.login-message').style.color = 'green';
+        }
+        if (urlParams.get('deleted') === '1') {
+            document.querySelector('.login-message').textContent = 'Your account has been deleted successfully.';
+            document.querySelector('.login-message').style.color = 'green';
+        }
+    </script>
+</body>
+</html> 
