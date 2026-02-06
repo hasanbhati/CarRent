@@ -102,7 +102,7 @@ function carAction(action, carId) {
         if (data.success) {
             location.reload();
         } else {
-            alert('Action failed.');
+            alert(data.message || 'Action failed.');
         }
     });
 } 

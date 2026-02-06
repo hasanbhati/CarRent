@@ -33,12 +33,6 @@
                 <label for="signup-password">Password:</label>
                 <input type="password" id="signup-password" name="password" required>
 
-                <label for="signup-usertype">Account Type:</label>
-                <select id="signup-usertype" name="usertype" required>
-                    <option value="client">Client</option>
-                    <option value="admin">Admin</option>
-                </select>
-
                 <button type="submit">Create Account</button>
             </form>
             <div style="text-align: center; margin-top: 15px;">
@@ -86,6 +80,18 @@
         if (urlParams.get('success') === '1') {
             document.querySelector('.login-message').textContent = 'Account created successfully! Please login.';
             document.querySelector('.login-message').style.color = 'green';
+        }
+        if (urlParams.get('success') === '2') {
+            document.querySelector('.login-message').textContent = 'Account created. Check your email for the activation link.';
+            document.querySelector('.login-message').style.color = 'green';
+        }
+        if (urlParams.get('success') === '3') {
+            document.querySelector('.login-message').textContent = 'Account created but email sending failed. Contact support or manually activate your account.';
+            document.querySelector('.login-message').style.color = 'orange';
+        }
+        if (urlParams.get('error') === '5') {
+            document.querySelector('.login-message').textContent = 'Please activate your account via the link sent to your email.';
+            document.querySelector('.login-message').style.color = 'red';
         }
         if (urlParams.get('deleted') === '1') {
             document.querySelector('.login-message').textContent = 'Your account has been deleted successfully.';

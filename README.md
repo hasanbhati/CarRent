@@ -1,58 +1,50 @@
-# Car Rental Project
+﻿# Car Rental Application
 
-## Project Structure
-- `index.html` – Login page
-- `client_dashboard.php` – Client dashboard
-- `admin_dashboard.php` – Admin dashboard
-- `css/` – Stylesheets
-- `js/` – JavaScript files
-- `images/` – Car images
-- `php/` – PHP backend scripts
-- `sql/` – SQL scripts for database setup
+A beginner-friendly web application for managing car rentals with client and admin roles.
 
-## XAMPP Setup Instructions
+## Features
 
-Follow these steps to set up and run the Car Rental project locally using XAMPP:
+- User Registration with email-based account activation
+- Email Activation system to verify new accounts
+- Client Dashboard to browse, rent, and manage cars
+- Admin Dashboard to add, remove, and manage cars
+- Rental History tracking for all users
+- Account Management for profile updates and settings
 
-### 1. Install XAMPP
-- Download XAMPP from [https://www.apachefriends.org/](https://www.apachefriends.org/)
-- Install it on your computer (Windows, Mac, or Linux)
+## Getting Started
 
-### 2. Start Apache and MySQL
-- Open the XAMPP Control Panel
-- Click **Start** next to **Apache** and **MySQL**
+Follow the **[SETUP_GUIDE.md](SETUP_GUIDE.md)** for complete installation and configuration instructions.
 
-### 3. Set Up the Database
-- Open your browser and go to [http://localhost/phpmyadmin](http://localhost/phpmyadmin)
-- Click the **Import** tab at the top
-- Click **Choose File** and select the `sql/init_cars.sql` file from your project folder
-- Click **Go** to import. This will create the `car_rental` database and fill it with sample car data
+### Quick Start
+1. Install XAMPP (or WAMP/Laragon)
+2. Start Apache and MySQL services
+3. Import sql/init_cars.sql via phpMyAdmin
+4. Place project in XAMPP's htdocs directory
+5. Access at http://localhost/CarRent/index.html
 
-### 4. Place Project Files in XAMPP’s Web Directory
-- Find your XAMPP installation directory (e.g., `C:/xampp` on Windows or `/Applications/XAMPP` on Mac)
-- Open the `htdocs` folder inside XAMPP
-- Copy your entire project folder (e.g., `CarRental`) into the `htdocs` folder
-- Make sure the folder structure is preserved
+## Default Admin Account
 
-### 5. Access the Website
-- In your browser, go to: [http://localhost/CarRental/index.html](http://localhost/CarRental/index.html)
-- You should see the login page
+- **Email:** admin1@carrental.com
+- **Password:** adminpass
 
-### 6. Login and Test
-- **Client login:**
-  - Username: `client1`
-  - Password: `clientpass`
-- **Admin login:**
-  - Username: `admin1`
-  - Password: `adminpass`
-- Try renting, releasing, adding, and removing cars to see all features in action
+## Key Files
+
+- index.html - Login & signup page
+- client_dashboard.php - Client interface
+- dmin_dashboard.php - Admin interface
+- php/ - Backend scripts (authentication, database, email, etc.)
+- ctivate.php - Email verification endpoint
+- src/ - PHPMailer library (required for emails)
+- css/ & js/ - Styling and frontend interactions
+
+## Technology Stack
+
+- **Frontend:** HTML5, CSS3, JavaScript
+- **Backend:** PHP 7.4+
+- **Database:** MySQL 5.7+
+- **Server:** Apache (XAMPP/WAMP/Laragon)
+- **Email:** PHPMailer + Brevo SMTP
 
 ---
 
-## How to Use
-- **Clients** can rent, release, and view cars
-- **Admins** can add, remove, and view cars, and see who rented each car
-
----
-
-If you have any issues, make sure file permissions allow uploads to the `images/` folder and that your XAMPP services are running. If you need help, open an issue or contact the project maintainer. 
+**For detailed setup, troubleshooting, and testing instructions, see [SETUP_GUIDE.md](SETUP_GUIDE.md).**
