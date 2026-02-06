@@ -19,6 +19,11 @@ $result = $conn->query($query);
 if ($result->num_rows > 0) {
     // User found, get user data
     $user = $result->fetch_assoc();
+    // Block login if account not activated
+    if ((int)$user['is_activated'] !== 1) {
+        header('Location: ../index.html?error=5');
+        exit();
+    }
     
     // Set session variables
     $_SESSION['username'] = $user['email']; // Using email as username for compatibility

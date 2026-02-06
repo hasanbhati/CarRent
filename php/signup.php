@@ -22,15 +22,34 @@ if ($result->num_rows > 0) {
     header('Location: ../index.html?error=2');
     exit();
 } else {
-    // Insert new user into database
-    $insert_query = "INSERT INTO users (email, password, usertype) VALUES ('$email', '$password', '$usertype')";
-    
-    if ($conn->query($insert_query) === TRUE) {
-        // Account created successfully
-        header('Location: ../index.html?success=1');
+    // Generate activation token and store hashed token with expiry
+    $token = bin2hex(random_bytes(32));
+    $tokenHash = hash('sha256', $token);
+    $expiresAt = date('Y-m-d H:i:s', time() + 86400); // 24 hours
+
+    // Insert new user as NOT activated
+    require_once __DIR__ . '/mailer.php';
+
+    $stmt = $conn->prepare("\n        INSERT INTO users (email, password, usertype, is_activated, activation_token_hash, activation_expires_at)\n        VALUES (?, ?, 'client', 0, ?, ?)\n    ");
+    $stmt->bind_param("ssss", $email, $password, $tokenHash, $expiresAt);
+    if ($stmt->execute()) {
+        // Send activation email
+        $baseUrl = "http://localhost/CarRent"; // adjust if your folder differs
+        $activationLink = $baseUrl . "/activate.php?token=" . urlencode($token);
+
+        // Try sending activation email
+        $emailSent = sendActivationEmail($email, $activationLink);
+        
+        // Redirect back to login page with success code
+        // Email may or may not have sent, but account was created
+        if ($emailSent) {
+            header('Location: ../index.html?success=2');
+        } else {
+            // Email failed but account created - inform user
+            header('Location: ../index.html?success=3');
+        }
         exit();
     } else {
-        // Error creating account
         header('Location: ../index.html?error=4');
         exit();
     }

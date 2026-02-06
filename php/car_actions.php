@@ -19,6 +19,20 @@ switch ($action) {
     case 'rent':
         // Rent a car
         if (isset($_SESSION['email']) && $_SESSION['usertype'] === 'client') {
+            // Ensure account is activated before allowing rent
+            $check = $conn->prepare("SELECT is_activated FROM users WHERE email = ?");
+            $check->bind_param("s", $_SESSION['email']);
+            $check->execute();
+            $r = $check->get_result()->fetch_assoc();
+
+            if ((int)$r['is_activated'] !== 1) {
+                echo json_encode([
+                    'success' => false,
+                    'message' => 'Account not activated.'
+                ]);
+                exit;
+            }
+
             $id = intval($_POST['car_id']);
             $email = $_SESSION['email'];
             $conn->query("UPDATE cars SET status = 'rented', rented_by = '$email', rent_start = NOW() WHERE id = $id AND status = 'available'");

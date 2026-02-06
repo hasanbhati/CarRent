@@ -59,3 +59,12 @@ VALUES
 -- Insert default admin user (email: admin1@carrental.com, password: adminpass)
 INSERT INTO users (email, password, usertype) VALUES
 ('admin1@carrental.com', 'adminpass', 'admin'); 
+
+-- Add account activation fields (used for email activation flow)
+ALTER TABLE users
+    ADD COLUMN is_activated TINYINT(1) NOT NULL DEFAULT 0,
+    ADD COLUMN activation_token_hash VARCHAR(255) DEFAULT NULL,
+    ADD COLUMN activation_expires_at DATETIME DEFAULT NULL;
+
+-- Ensure default admin is active so it can log in immediately
+UPDATE users SET is_activated = 1 WHERE email = 'admin1@carrental.com';
